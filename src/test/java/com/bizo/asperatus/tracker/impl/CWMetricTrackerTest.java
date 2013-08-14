@@ -31,7 +31,7 @@ public final class CWMetricTrackerTest {
 
     tracker.track("m1", 5, dims);
 
-    Thread.sleep(100);
+    Thread.sleep(5000);
 
     assertTrue(hasAggregation("TestNamespace", aggregation("m1", "d1", "a", 1, 5, 5, 5)));
   }
@@ -43,7 +43,7 @@ public final class CWMetricTrackerTest {
     dims.add(new Dimension("d2", "a"));
     
     tracker.track("m1", 5, Unit.Count, dims);
-    Thread.sleep(100);
+    Thread.sleep(5000);
     
     assertTrue(hasAggregation("TestNamespace", aggregation("m1", "d1", "a", 1, 5, 5, 5)));    
     assertTrue(hasAggregation("TestNamespace", aggregation("m1", "d2", "a", 1, 5, 5, 5)));
@@ -56,7 +56,7 @@ public final class CWMetricTrackerTest {
     dims.add(new Dimension("d2", "a"));
     
     tracker.track("m1", 5, Unit.Count, Collections.singleton(new CompoundDimension(dims)));
-    Thread.sleep(100);
+    Thread.sleep(5000);
     
     assertTrue(hasAggregation("TestNamespace", aggregation("m1", dims, 1, 5, 5, 5)));
   }
@@ -71,7 +71,7 @@ public final class CWMetricTrackerTest {
       tracker.track(String.valueOf(i), 5, dims);
     }
 
-    Thread.sleep(400);
+    Thread.sleep(5000);
 
     for (int i = 0; i < 1000; i++) {
       assertTrue(hasAggregation("TestNamespace", aggregation(String.valueOf(i), "d1", "a", 1, 5, 5, 5)));
